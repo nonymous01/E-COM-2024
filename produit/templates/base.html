@@ -5,49 +5,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- debut navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">YS_Bar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Boutique</a>
-                </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categories
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Sac</a></li>
-                            <li><a class="dropdown-item" href="#">vetements homme</a></li>
-                            <li><a class="dropdown-item">vetements femme</li>
-                            <li><a class="dropdown-item" href="#">informatique</a></li>
-                        </ul>
-                    </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar scroll</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"><h5>Home</h5></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><h5>TopProduit</h5></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><h5>SuperDeal</h5></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Link
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Panier</a></li>
+                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Deconnexion</a></li>
+              </ul>
+            </li>
             
-            <div class="form-inline my-2 my-lg-0">
-                <a href="#" class="btn btn-warning">Connexion</a>
-                <a href="">
-                    <img id="icon-panier" src="" height="30px" alt="">
-                </a>
-                <p id="total-panier">0</p>
-                </div>
-          </div>
-        </div>
-        
-      </nav>
-        <!-- fin navbar -->
+          </ul>
+          <form class="d-flex" role="search">
+    
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
 
-    {% block content %}
+          </form>
+          <ul class="images">
+            <div class="im"><a href=""><img src="{% static 'images/panier.png' %}" height="40px" alt=""></a></div>
+            <div class="compte"><h3>0</h3></div>
+          </ul>
+          
+        </div>
+      </div>
+</nav>
+<div class="contenaire">
+  {% for gril in grilles %}
+    <div class="grid-container">
+        <div class="cercle">
+            <img src="{{ gril.images.url}}" alt="">
+          </div>
+          <div class="gil">{{ gril.name_grille }}</div><br><br>
+
+    </div>
+  {% endfor %}
+</div>
+
+<div id="carouselExampleAutoplaying1"  class="carousel slide" data-bs-ride="carousel" >
+  <div class="carousel-inner">
+  <div class="carousel-item active">
+      <img src=" {% static 'images/wallpaperflare.com_wallpaper6.jpg' %}"  id="crr" height="400px"    class="d-block w-100" alt="...">
+  </div>
+  <div class="carousel-item">
+      <img src="{% static 'images/msg5690564001-15785_qOO7u4f.jpg' %}" id="crr" height="400px"  class="d-block w-100" alt="...">
+  </div>
+  <div class="carousel-item">
+      <img src="{% static 'images/wallpaperflare.com_wallpaper6.jpg' %}" id="crr" height="400px"  class="d-block w-100" alt="...">
+  </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button"  data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+<br>
+<div class="deal">Supper Deals</div>
+
+<div class="conte">
+
+  {% for produit  in produits %}
+
+  <div class="vvvv">
+    <div class="element">
+        <div class="OFF">
+          <div class="offre"> {{produit.off}}% OFF</div>
+          <form action="" method="post">
+          <div class="offre1"> <img src="{% static 'images/favorie.png' %}" height="30px" alt=""> </div>
+        </form>
+        </div>
+        <a href=" {% url 'detail' produit.slug %}">
+         
+          <div class="offimage" type="submit">
+            <img src="{{produit.image.url}}"  alt="">
+          </div>
+        </a>
+      </div>
+      <div class="element1">
+      <div class="name">{{produit.name_produit}}</div>
+        <div class="cont">{{produit.description}}</div>
+        <div class="cont1">
+            <div class="prix">{{produit.prix}} FCFA</div>
+            <div class="prix1"><a href=" "><img src="{% static 'images/panier.png' %}" height="30px" alt=""></a></div>
+        </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+ </div>
+
+  <div class="black">
+  <span>Use discount code </span>
+  <strong style="color: chocolate;">YS_SHOP</strong>
+  <span> in checkout page.</span>
+  <h3 style="font-size: 1.5rem;">  Get discount for your first panier</h3>
+ </div> 
+ 
+ <br><br><br><br>
+ <div class="deal">Top Products</div>
+
+ <div class="top10">
+ {% for  top in topproducts %}
+  <div class="azerty"> 
+    <a class="top1" href="{% url 'topdetail' top.slug %}"><img src="{{top.image.url}}" height="100%" alt=""></a>
+   <div class="top2">
+      <div class="soustop"> <h5>{{top.name_produit}}</h5>  </div><hr>
+      <div class="soustop1"> {{top.description}} </div>
+      <div class="soustop2"> {{top.prix}} FCFA</div>
+      <a href=""><div class="soustop3"><img src="{% static 'images/panier.png' %}" height="40px" alt=""></div></a>
+    </div>
+  </div>
+ {% endfor %}
+ </div>
+<!-- footer -->
+ <footer>
+  <form action="" method="post">
+  <div class="footer1">
+    
+    <div class="soufoot1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, nulla nemo. Nulla officia ut et atque aliquam impedit consequuntur asperiores vero consectetur, ipsum molestiae provident recusandae, ducimus illo earum fugiat.voluptates.</div>
+    <div class="soufoot2">
+      <label for="">email</label>
+      <input type="email" placeholder="Entrer votre email">
+      <label for="">votre message</label>
+      <input type="text" placeholder="Entrer votre message">
+      <button type="submit">Envoyer</button>
+    </div>
+  </div>
+  <div class="footer2">
+    <div class="ff"><strong>YS_SHOP</strong><br><br>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+      <p>
+        677 YS_SHOP Street, New York, US</p>
+        <p>+225 07591777681</p>
+        <P>youssef.anonymous0@gmail.com</P>
+        <p>
+          Mon - Fri / 8:00 AM - 8:00 PM</p>
+    </div>
+    <div class="ff1"><strong>Information</strong><br><br>
+      <p>Products Returns</p>
+      <p>Terms Conditio</p>
+      <p>Contact CI</p>
+      <p>Support Center</p>
+      <p>Privacy Policy</p>
+      <p>Payment Methods</p>
+    </div>
+    <div class="ff2">
+
+      <strong>Our Collection</strong><br><br>
+          <p>Smartphone & Tablet</p>
+          <p>Video & Audio</p>
+          <p>Camera & Photo</p>
+          <p>Games & Console</p>
+          <p>Electronic & Consumer</p>
+          <p>Smartwatches & Fitness</p>
+    </div>
+    <div class="ff3">
+      <strong> Quick Links</strong><br><br>
+      <p>Give €50. Get €50</p>
+      <p>Recalled Items</p>
+      <p>Order Tracking</p>
+      <p>Gift Receipt</p>
+      <p>How to Buy</p>
+      <p>Affiliate Program</p>
+    </div>
+
+    <div class="ff4"><strong>reseaux sociaux</strong><br><br>
+      <p>Linkedin</p>
+      <p>Facebook</p>
+      <p>Twitter</p>
+      <p>Instagram</p>
+      <p>YouTube</p>
+      <p>Pinterest</p>
+      <p>github</p>
+    </div>
+
+  </div>
+  </form>
+ </footer>
+
+   {% block content %}
+    
     
     {% endblock content %}
 </body>

@@ -1,0 +1,56 @@
+{% extends "bare.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a href="  " class="btn btn-outline-dark">&#x2190; Continuer vos achats</a>
+        </div>
+        <br>
+        <div class="box-element">
+            <table class="table">
+                <tr>
+                <th>
+                    <h5>Articles: <strong>3</strong></h5>
+                </th>
+                <th>
+                    <h5>Total: <strong>$100</strong></h5>
+                </th>
+                <th>
+                <a style="float: right; margin:5px" href="" class="btn btn-success">
+                    Vérifier
+                </a>
+                </th>
+                </tr>
+            </table>
+            <div class="box-element">
+                <div class="panier-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Article</strong></div>
+                <div style="flex:1"><strong>Prix</strong></div>
+                <div style="flex:1"><strong>Quantité</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+                </div>
+                {% comment %} {% for article  in articles %} {% endcomment %}
+                      <div class="panier-row">
+                    <div style="flex:2"><img class="row-images" src="" alt=""></div>
+                    <div style="flex:2"> nom </div>
+                    <div style="flex:1">$ 1212 </div>
+                    <div style="flex:1">
+                        <p class="quantite">2</p>
+                        <div class="quantite">
+                        <img class="chg-quantite" src="" alt="">
+                        <img class="chg-quantite" src="" alt="">
+                    </div>
+                    <div style="flex:1">$200</div>
+                </div>
+                {% comment %} {% endfor %}
+               {% endcomment %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

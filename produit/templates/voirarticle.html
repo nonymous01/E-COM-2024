@@ -1,0 +1,58 @@
+
+{% extends "bare.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="paye">
+    <div class="paye1">
+        <div id="carouselExampleAutoplaying"  class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" >
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ detail.image.url}}"  id="crr" height="400px"    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ detail.image_detail_1.url}}" id="crr" height="400px"  class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ detail.image_detail_2.url}}" id="crr" height="400px"  class="d-block w-100" alt="...">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        </div>
+      <div class="paye2">
+      
+        <div class="top-paye1"><h1> {{ detail.name_produit }}</h1> </div>
+        <div class="top-paye2"> {{ detail.prix }} FCFA </div>
+        {% if detail.stock is not none %}
+        <div class="top-paye3">{{detail.stock}}</div>
+        {% else %}
+        <div class="top-paye3"><s>{{detail.stock}}</s></div>
+        {% endif %}
+        <div class="top-paye4">
+            <i>DESCRIPTION :</i>  {{ detail.detail }}
+        </div>
+        <div class="top-paye5">
+            <div class="quantite99">
+                    <div class="qt"><h4>Qt :</h4></div>
+                    <div class="qt1"><input type="number" name="nuber" id="" min="1" value="="1></div>
+            </div>
+            <button class="quantite1" type="submit" >add panier</button>
+            <a class="quantite2" href=" {% url 'produit'%} ">continuer vos achats</a>
+        </div>
+      </div>
+</div>
+
+
+
+    
+    
+  {% endblock  %}
